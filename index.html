@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+8<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -10,12 +10,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
+            background-color: #fff; /* 默认白天模式背景色 */
+            color: #333; /* 默认白天模式文本颜色 */
         }
         footer {
             background-color: #ffc0cb; /* 淡粉红色 */
@@ -36,10 +32,28 @@
             color: #ff69b4; /* 粉红色 */
         }
         /* 添加更多样式以适应您的需求 */
+        /* 夜间模式 */
+        body.dark-mode {
+            background-color: #000; /* 夜间模式背景色 */
+            color: #fff; /* 夜间模式文本颜色 */
+        }
+        body.dark-mode footer {
+            background-color: #444; /* 夜间模式底部背景色 */
+        }
+        /* 悬浮按钮样式 */
+        .toggle-button {
+            position: fixed;
+            bottom: 50px; /* 调整按钮距离底部的距离 */
+            right: 20px;
+            z-index: 999;
+            background-color: #333;
+            color: #fff;
+            padding: 5px; /* 调整按钮大小 */
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-
 
 <!-- 您提供的文字内容 -->
 <section>
@@ -48,9 +62,12 @@
     <p>请访问我们的<a href="https://www.yuanshen.com/#/">网站</a>了解更多信息。</p>
 </section>
 
-<footer id="footer">
+<footer>
     网站运行时间：<span id="uptime">0天 0小时 0分钟 0秒</span>
 </footer>
+
+<!-- 切换按钮 -->
+<div class="toggle-button" onclick="toggleDarkMode()">切换夜间模式</div>
 
 <script>
     // JavaScript 计时器
@@ -75,6 +92,18 @@
     }
 
     setInterval(updateUptime, 1000);
+
+    // 切换夜间模式和白天模式
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+
+    // 自动切换夜间模式
+    let currentTime = new Date();
+    let currentHour = currentTime.getHours();
+    if (currentHour >= 19 || currentHour < 7) {
+        document.body.classList.add("dark-mode");
+    }
 </script>
 
 </body>
