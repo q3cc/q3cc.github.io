@@ -1,9 +1,9 @@
-8<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>景德镇市第九中学南梁保护中心</title>
     <style>
         /* 在这里可以添加样式 */
         body {
@@ -71,11 +71,10 @@
 
 <script>
     // JavaScript 计时器
-    let startTime = new Date("2024-03-28T21:00:00");
-    console.log(startTime);
+    let startTime = new Date("2024-03-28T21:00:00").getTime();
     function updateUptime() {
-        let currentTime = new Date();
-        let timeDifference = currentTime.getTime() - startTime.getTime();
+        let currentTime = new Date().getTime();
+        let timeDifference = currentTime - startTime;
 
         let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         timeDifference -= days * (1000 * 60 * 60 * 24);
@@ -99,8 +98,7 @@
     }
 
     // 自动切换夜间模式
-    let currentTime = new Date();
-    let currentHour = currentTime.getHours();
+    var currentHour = new Date().getHours();
     if (currentHour >= 19 || currentHour < 7) {
         document.body.classList.add("dark-mode");
     }
